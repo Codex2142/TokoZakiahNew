@@ -50,11 +50,11 @@
             </div>
             <div class="row mt-2 d-none d-md-flex">
             <div class="col-3">
-                <button type="button" class="btn btn-warning w-100">TOTALAN</button>
+                <a href="/totalan"><button type="button" class="btn btn-warning w-100">TOTALAN</button></a>
             </div>
                 <div class="col-2 offset-7">
                     <div class="col">
-                        <button type="button" class="btn btn-warning w-100">SELENGKAPNYA</button>
+                        <a href="/detail"><button type="button" class="btn btn-warning w-100">SELENGKAPNYA</button></a>
                     </div>
                 </div>
             </div>

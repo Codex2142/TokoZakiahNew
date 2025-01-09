@@ -18,18 +18,18 @@
 </head>
 <body>
     @include('layout.header')
-    <button type="button" class="btn btn-primary ms--sm-5 ms-4"><i class="bi bi-arrow-left"></i></button>
+    <a href="/beranda"><button type="button" class="btn btn-primary ms-4"><i class="bi bi-arrow-left"></i></button></a>
     <div class="container-fluid">
         <div class="container text-center mt-5">
             <div class="row d-flex align-items-center">
                 <div class="col-sm-4 col-12">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="bi bi-x-circle-fill"></i></button>
+                        <button class="btn btn-outline-danger" type="button" id="button-addon1"><i class="bi bi-x-circle-fill"></i></button>
                     </div>
                 </div>
                 <div class="col-sm-1 col-12 offset-sm-6">
-                    <button type="button" class="btn btn-success">Tambahkan</button>
+                    <a href="/produk/tambahkan"><button type="button" class="btn btn-success">Tambahkan</button></a>
                 </div>
             </div>
         </div>
@@ -66,25 +66,12 @@
                             </div>
                         </div>
                             <div class="card-body text-center">
-                                <button class="btn btn-primary mb-2 w-100">Button 1</button>
-                                <button class="btn btn-secondary w-100">Button 2</button>
+                                <button class="btn btn-warning mb-2 w-100"><i class="bi bi-pencil"></i> Edit</button>
+                                <button class="btn btn-danger w-100"> <i class="bi bi-trash"></i> Hapus</button>
                             </div>
                         </div>
                 </div>
-                
-
-
                 <!-- end loop -->
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title.</p>
-                            <a href="#" class="card-link">Card link</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
