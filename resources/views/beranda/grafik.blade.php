@@ -18,7 +18,7 @@
 </head>
 <body>
     @include('layout.header')
-    <a href="/beranda"><button type="button" class="btn btn-primary"><i class="bi bi-arrow-left"></i></button></a>
+    <a href="/beranda"><button type="button" class="btn btn-primary ms-4"><i class="bi bi-arrow-left"></i></button></a>
 
     <div class="container-fluid">
         <div class="container">

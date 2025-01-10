@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Dynamic Tables</title>
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         body {
@@ -14,10 +14,14 @@
                 padding-top: 65px; /* Adjusted space for smaller screens */
             }
         }
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
     @include('layout.header')
+
     <div class="row align-items-center ms-4" style="height: 100px;">
         <!-- Back Button -->
         <div class="col-auto">
@@ -27,15 +31,15 @@
         <!-- Input Group -->
         <div class="col-auto">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                <button class="btn btn-outline-danger" type="button" id="button-addon1"><i class="bi bi-x-circle-fill"></i></button>
+                <input id="searchInput" type="text" class="form-control" placeholder="Cari Nama Produk" aria-label="Search" aria-describedby="button-addon1" autocomplete="off">
+                <button id="clearSearch" class="btn btn-outline-danger" type="button"><i class="bi bi-x-circle-fill"></i></button>
             </div>
         </div>
     </div>
-    
+
     <div class="container-fluid">
         <div class="container">
-            <div class="row g-3"><!-- Added `g-3` for column gap -->
+            <div class="row g-3">
                 <!-- Left Table -->
                 <div class="col-md-5">
                     <table class="table table-striped align-middle">
@@ -47,15 +51,16 @@
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="leftTable">
                             <tr>
                                 <td>Cleo Gelas</td>
                                 <td>49.000</td>
                                 <td>53.000</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary"><i class="bi bi-bag-plus"></i></button>
+                                    <button type="button" class="btn btn-primary add-to-right"><i class="bi bi-bag-plus"></i></button>
                                 </td>
                             </tr>
+                            <!-- Add more rows here -->
                         </tbody>
                     </table>
                 </div>
@@ -72,26 +77,16 @@
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1.</th>
-                                <td>Cleo Gelas</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">-</button>
-                                    <span>1</span>
-                                    <button type="button" class="btn btn-success">+</button>
-                                </td>
-                                <td>49.000</td>
-                                <td>49.000</td>
-                            </tr>
+                        <tbody id="rightTable">
+                            <!-- Dynamic rows will be added here -->
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-6 ">
+                        <div class="col-6">
                             <p class="font-monospace">Total Keseluruhan:</p>
                         </div>
                         <div class="col-6 text-end">
-                            <p class="font-monospace">49.000</p>
+                            <p class="font-monospace" id="totalAmount">0</p>
                         </div>
                     </div>
                     <div class="row justify-content-end">
@@ -104,8 +99,7 @@
         </div>
     </div>
 
-    
-
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/transaksi.js') }}"></script>
 </body>
 </html>

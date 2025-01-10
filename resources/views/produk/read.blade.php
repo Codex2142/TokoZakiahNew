@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,10 @@
                 padding-top: 65px; /* Adjusted space for smaller screens */
             }
         }
+        .hidden {
+            display: none !important;
+        }
+        
     </style>
 </head>
 <body>
@@ -24,8 +28,8 @@
             <div class="row d-flex align-items-center">
                 <div class="col-sm-4 col-12">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-danger" type="button" id="button-addon1"><i class="bi bi-x-circle-fill"></i></button>
+                        <input id="searchInput" type="text" class="form-control" placeholder="Cari Nama Produk" aria-label="Search" aria-describedby="button-addon1" autocomplete="off">
+                        <button id="clearButton" class="btn btn-outline-danger" type="button"><i class="bi bi-x-circle-fill"></i></button>
                     </div>
                 </div>
                 <div class="col-sm-1 col-12 offset-sm-6">
@@ -36,15 +40,12 @@
     </div>
     
     <!-- produk -->
-
     <div class="container-fluid mt-4">
         <div class="container">
-            <div class="row">
+            <div class="row" id="productContainer">
                 <!-- Card 1 -->
-
-                <!-- loop -->
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="card" style="width: 100%;" data-bs-toggle="collapse" data-bs-target="#buttons-1" aria-expanded="false" aria-controls="buttons-1">
+                <div class="col-6 col-lg-3 mb-3 product-card">
+                    <div class="card" style="width: 100%;">
                         <div class="card-body">
                             <h5 class="card-title mb-5">Cleo Gelas</h5>
                             <p class="card-text">11 Januari 2025</p>
@@ -65,16 +66,44 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="card-body text-center">
-                                <button class="btn btn-warning mb-2 w-100"><i class="bi bi-pencil"></i> Edit</button>
-                                <button class="btn btn-danger w-100"> <i class="bi bi-trash"></i> Hapus</button>
-                            </div>
+                        <div class="card-body text-center">
+                            <button class="btn btn-warning mb-2 w-100"><i class="bi bi-pencil"></i> Edit</button>
+                            <button class="btn btn-danger w-100"> <i class="bi bi-trash"></i> Hapus</button>
                         </div>
+                    </div>
                 </div>
-                <!-- end loop -->
+                <!-- Add more cards here -->
             </div>
         </div>
     </div>
+    
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const clearButton = document.getElementById('clearButton');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // Search functionality
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                productCards.forEach(card => {
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    if (title.includes(query)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+
+            clearButton.addEventListener('click', () => {
+                searchInput.value = '';
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

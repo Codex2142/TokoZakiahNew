@@ -21,11 +21,6 @@
                             <i class="bi bi-person-fill"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li class="dropdown-item text-center">
-                                <button id="toggleDarkMode" class="btn btn-outline-primary w-100" style="background-color: yellow; color: black;">
-                                    <i id="toggleIcon" class="bi bi-moon-fill"></i> Dark Mode
-                                </button>
-                            </li>
                             <li><button class="dropdown-item" type="button"><i class="bi bi-info-circle"></i> Informasi</button></li>
                             <li><a href="/profil" class="text-decoration-none"><button class="dropdown-item" type="button"><i class="bi bi-person-circle"></i> Akun</button></a></li>
                             <li><button class="dropdown-item" type="button"><i class="bi bi-power"></i> Logout</button></li>

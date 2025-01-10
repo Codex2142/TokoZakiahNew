@@ -30,3 +30,9 @@ Route::get('/totalan', function () {
 Route::get('/profil', function () {
     return view('akun.profil');
 });
+Route::get('/profil/ubah-username', function () {
+    return view('akun.username');
+});
+Route::get('/profil/ubah-password', function () {
+    return view('akun.password');
+});
