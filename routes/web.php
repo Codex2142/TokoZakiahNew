@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return view('login.login');
@@ -14,15 +15,15 @@ Route::get('/detail', function () {
     return view('beranda.grafik');
 });
 
-Route::get('/produk', function () {
-    return view('produk.read');
-});
-Route::get('/produk/tambahkan', function () {
-    return view('produk.create');
-});
-Route::get('/produk/edit', function () {
-    return view('produk.update');
-});
+
+Route::get('/produk', [ProdukController::class, 'read'])->name('produk.read');
+Route::delete('/produk/hapus/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
+
+route::get('/produk/edit/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
+route::put('/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
+
+route::get('/produk/tambahkan', [ProdukController::class, 'tambah'])->name('produk.tambah');
+Route::post('/produk/add', [ProdukController::class, 'store'])->name('produk.add');
 
 Route::get('/totalan', function () {
     return view('transaksi.transaksi');

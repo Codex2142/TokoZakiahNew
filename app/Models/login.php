@@ -19,7 +19,6 @@ class Login extends Model
      * @var array
      */
     protected $fillable = [
-        'level',
         'username',
         'password',
     ];

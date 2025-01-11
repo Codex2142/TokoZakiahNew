@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Tambah Produk</title>
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         body {
@@ -24,18 +24,34 @@
             <div class="row align-items-center">
                 <!-- Left Column (Form) -->
                 <div class="col-md-6">
-                    <form>
+                    <form action="{{ route('produk.add') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="namaProduk" class="form-label">Nama Produk</label>
-                            <input type="text" class="form-control" id="namaProduk" placeholder="Masukkan nama produk">
+                            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="namaProduk" value="{{ old('nama') }}" placeholder="Masukkan nama produk">
+                            @error('nama')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="hargaGrosir" class="form-label">Harga Grosir</label>
-                            <input type="text" class="form-control" id="hargaGrosir" placeholder="Masukkan harga grosir">
+                            <input type="text" name="harga_grosir" class="form-control @error('harga_grosir') is-invalid @enderror" id="hargaGrosir" value="{{ old('harga_grosir') }}" placeholder="Masukkan harga grosir">
+                            @error('harga_grosir')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="hargaBeli" class="form-label">Harga Beli</label>
-                            <input type="text" class="form-control" id="hargaBeli" placeholder="Masukkan harga beli">
+                            <input type="text" name="harga_beli" class="form-control @error('harga_beli') is-invalid @enderror" id="hargaBeli" value="{{ old('harga_beli') }}" placeholder="Masukkan harga beli">
+                            @error('harga_beli')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-success">SIMPAN</button>
                     </form>

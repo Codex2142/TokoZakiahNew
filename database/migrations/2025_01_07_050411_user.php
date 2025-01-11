@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->id();
-            $table->string('level');
             $table->string('username')->unique();
             $table->string('password');
         });

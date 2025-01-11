@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Semua Produk</title>
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         body {
@@ -40,21 +40,31 @@
     </div>
     
     <!-- produk -->
+     <div class="container-fluid">
+        <div class="container">
+            @if (session('success'))
+                <div class="alert alert-success rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+     </div>
+
     <div class="container-fluid mt-4">
         <div class="container">
             <div class="row" id="productContainer">
-                <!-- Card 1 -->
+                @foreach ($produk as $k)
                 <div class="col-6 col-lg-3 mb-3 product-card">
                     <div class="card" style="width: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title mb-5">Cleo Gelas</h5>
-                            <p class="card-text">11 Januari 2025</p>
+                            <h5 class="card-title mb-5 text-center">{{$k->nama}}</h5>
+                            <p class="card-text">{{ \Carbon\Carbon::parse($k->updated_at)->translatedFormat('d F Y') }}</p>
                             <div class="row align-items-center mb-2">
                                 <div class="col-6">
                                     <h6 class="card-subtitle text-body-secondary">Beli:</h6>
                                 </div>
                                 <div class="col-6">
-                                    Rp. 49.000
+                                    {{$k->harga_grosir}}
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -62,17 +72,25 @@
                                     <h6 class="card-subtitle text-body-secondary">Grosir:</h6>
                                 </div>
                                 <div class="col-6">
-                                    Rp. 53.000
+                                {{$k->harga_beli}}
                                 </div>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <button class="btn btn-warning mb-2 w-100"><i class="bi bi-pencil"></i> Edit</button>
-                            <button class="btn btn-danger w-100"> <i class="bi bi-trash"></i> Hapus</button>
+                        <a href="{{route('produk.edit', $k->id)}}">
+                                <button class="btn btn-warning mb-2 w-100"><i class="bi bi-pencil"></i> Edit</button>
+                            </a>
+                                <form action="{{ route('produk.delete', $k->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger w-100">
+                                        <i class="bi bi-trash"></i> Hapus
+                                    </button>
+                                </form>
                         </div>
                     </div>
                 </div>
-                <!-- Add more cards here -->
+                @endforeach
             </div>
         </div>
     </div>
